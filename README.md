@@ -34,4 +34,3 @@ You are expected to commit your progress after every live session.
 
 ---
 *Built with GitHub Copilot & Cursor @ Saras AI Institute*.
-"# fitsync-project-harprabh-nanda" 
