@@ -1,7 +1,11 @@
 import streamlit as st
+from modules.theme import toggle_dark_mode, get_theme_css
 
 # Set page configurations
 st.set_page_config(layout="wide", page_title="FitSync - Home")
+
+dark_mode = toggle_dark_mode()
+st.markdown(get_theme_css(dark_mode), unsafe_allow_html=True)
 
 # Main title
 st.title("FitSync - Personal Health Analytics 🎉")
