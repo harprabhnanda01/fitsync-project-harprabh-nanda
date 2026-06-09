@@ -81,12 +81,13 @@ with chart_row1_col1:
     monthly_avg_recovery = filtered_df.groupby('month')['recovery_score'].mean().reset_index()
     monthly_avg_recovery['month'] = monthly_avg_recovery['month'].astype(str)
     fig1 = px.line(monthly_avg_recovery, x='month', y='recovery_score', title="Average Recovery Score Month-wise")
-    fig1.update_traces(line_color=theme['SECONDARY'], marker_size=8)
+    fig1.update_traces(mode='lines+markers', line_color=theme['SECONDARY'], marker_size=8)
     fig1.update_layout(
         template='plotly_dark',
         plot_bgcolor=theme['PLOT_BG'],
         paper_bgcolor=theme['PLOT_BG'],
         hovermode='x unified',
+        xaxis_type='category',
         title_font_size=18,
         font=dict(family='Segoe UI', color=theme['TEXT_PRIMARY'])
     )
