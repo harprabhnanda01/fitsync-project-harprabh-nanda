@@ -27,6 +27,8 @@ st.set_page_config(
 
 dark_mode = toggle_dark_mode()
 theme = get_theme(dark_mode)
+chart_template = 'plotly_dark' if dark_mode else 'plotly_white'
+grid_color = 'rgba(148, 163, 184, 0.25)' if dark_mode else 'rgba(15, 23, 42, 0.14)'
 st.markdown(get_theme_css(dark_mode), unsafe_allow_html=True)
 
 # Main title
@@ -86,15 +88,32 @@ with chart_row1_col1:
     )
     fig1.update_traces(line_color=theme['SECONDARY'], marker_size=8)
     fig1.update_layout(
-        template='plotly_dark',
+        template=chart_template,
         plot_bgcolor=theme['PLOT_BG'],
         paper_bgcolor=theme['PLOT_BG'],
         hovermode='x unified',
         xaxis_title='Date',
         yaxis_title='Recovery Score',
-        xaxis=dict(tickformat='%b %d', tickangle=-45, showgrid=True),
-        yaxis=dict(range=[0, 100], showgrid=True),
-        title_font_size=18,
+        xaxis=dict(
+            tickformat='%b %d',
+            tickangle=-45,
+            showgrid=True,
+            gridcolor=grid_color,
+            tickfont=dict(color=theme['TEXT_PRIMARY']),
+            title_font=dict(color=theme['TEXT_PRIMARY']),
+            linecolor=theme['TEXT_PRIMARY'],
+            zerolinecolor=grid_color
+        ),
+        yaxis=dict(
+            range=[0, 100],
+            showgrid=True,
+            gridcolor=grid_color,
+            tickfont=dict(color=theme['TEXT_PRIMARY']),
+            title_font=dict(color=theme['TEXT_PRIMARY']),
+            linecolor=theme['TEXT_PRIMARY'],
+            zerolinecolor=grid_color
+        ),
+        title=dict(font=dict(color=theme['TEXT_PRIMARY'], family='Segoe UI', size=18)),
         font=dict(family='Segoe UI', color=theme['TEXT_PRIMARY'])
     )
     st.plotly_chart(fig1, use_container_width=True)
@@ -110,12 +129,28 @@ with chart_row1_col2:
         facet_col_wrap=2
     )
     fig2.update_layout(
-        template='plotly_dark',
+        template=chart_template,
         plot_bgcolor=theme['PLOT_BG'],
         paper_bgcolor=theme['PLOT_BG'],
-        title_font_size=18,
+        title=dict(font=dict(color=theme['TEXT_PRIMARY'], family='Segoe UI', size=18)),
         font=dict(family='Segoe UI', color=theme['TEXT_PRIMARY']),
         showlegend=False
+    )
+    fig2.update_xaxes(
+        showgrid=True,
+        gridcolor=grid_color,
+        linecolor=theme['TEXT_PRIMARY'],
+        zerolinecolor=grid_color,
+        tickfont=dict(color=theme['TEXT_PRIMARY']),
+        title_font=dict(color=theme['TEXT_PRIMARY'])
+    )
+    fig2.update_yaxes(
+        showgrid=True,
+        gridcolor=grid_color,
+        linecolor=theme['TEXT_PRIMARY'],
+        zerolinecolor=grid_color,
+        tickfont=dict(color=theme['TEXT_PRIMARY']),
+        title_font=dict(color=theme['TEXT_PRIMARY'])
     )
     st.plotly_chart(fig2, use_container_width=True)
 
