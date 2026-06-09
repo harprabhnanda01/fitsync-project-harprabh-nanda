@@ -11,7 +11,8 @@ LIGHT_THEME = {
     "TEXT_SECONDARY": "#4b5563",
     "BORDER": "rgba(74, 222, 128, 0.18)",
     "SHADOW": "rgba(34, 197, 94, 0.18)",
-    "PANEL_BORDER": "rgba(132, 204, 22, 0.22)"
+    "PANEL_BORDER": "rgba(132, 204, 22, 0.22)",
+    "PLOT_BG": "#fff8d6"
 }
 
 DARK_THEME = {
@@ -25,7 +26,8 @@ DARK_THEME = {
     "TEXT_SECONDARY": "#cbd5e1",
     "BORDER": "rgba(96, 165, 250, 0.2)",
     "SHADOW": "rgba(15, 23, 42, 0.65)",
-    "PANEL_BORDER": "rgba(56, 189, 248, 0.15)"
+    "PANEL_BORDER": "rgba(56, 189, 248, 0.15)",
+    "PLOT_BG": "#1f2937"
 }
 
 
