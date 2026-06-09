@@ -75,19 +75,25 @@ chart_row1_col1, chart_row1_col2 = st.columns(2)
 chart_row2_col1, chart_row2_col2 = st.columns(2)
 
 with chart_row1_col1:
-    # Average Recovery Score Month-wise
+    # Recovery Score Trend Over Time
     filtered_df['date'] = pd.to_datetime(filtered_df['date'])
-    filtered_df['month'] = filtered_df['date'].dt.to_period('M')
-    monthly_avg_recovery = filtered_df.groupby('month')['recovery_score'].mean().reset_index()
-    monthly_avg_recovery['month'] = monthly_avg_recovery['month'].astype(str)
-    fig1 = px.line(monthly_avg_recovery, x='month', y='recovery_score', title="Average Recovery Score Month-wise")
-    fig1.update_traces(mode='lines+markers', line_color=theme['SECONDARY'], marker_size=8)
+    fig1 = px.line(
+        filtered_df,
+        x='date',
+        y='recovery_score',
+        title='Recovery Score Over Time',
+        markers=True
+    )
+    fig1.update_traces(line_color=theme['SECONDARY'], marker_size=8)
     fig1.update_layout(
         template='plotly_dark',
         plot_bgcolor=theme['PLOT_BG'],
         paper_bgcolor=theme['PLOT_BG'],
         hovermode='x unified',
-        xaxis_type='category',
+        xaxis_title='Date',
+        yaxis_title='Recovery Score',
+        xaxis=dict(tickformat='%b %d', tickangle=-45, showgrid=True),
+        yaxis=dict(range=[0, 100], showgrid=True),
         title_font_size=18,
         font=dict(family='Segoe UI', color=theme['TEXT_PRIMARY'])
     )
