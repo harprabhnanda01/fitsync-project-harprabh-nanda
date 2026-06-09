@@ -227,9 +227,7 @@ with st.sidebar:
 
 # Footer
 st.divider()
-footer_col1, footer_col2, footer_col3 = st.columns(3)
-with footer_col1:
-    st.markdown("🔗 **Quick Links**\n- Dashboard\n- Trends\n- Profile")
+footer_col2, footer_col3 = st.columns(3)
 with footer_col2:
     st.markdown("📊 **Data Summary**\n- Total Days Tracked\n- Avg Steps: 8,500+\n- Avg Sleep: 7 hours")
 with footer_col3:
